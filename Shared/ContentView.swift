@@ -12,12 +12,12 @@ struct ContentView: View {
         TabView {
             PieChartView(values: [1300, 500, 300], names: ["Rent", "Transport", "Education"], formatter: {value in String(format: "$%.2f", value)})
                 .tabItem {
-                    Label("Menu", systemImage: "chart.pie")
+                    Label("Pie Chart", systemImage: "chart.pie")
                 }
             
             TransactionView()
                 .tabItem {
-                    Label("Order", systemImage: "plus.circle")
+                    Label("Transaction", systemImage: "plus.circle")
                 }
         }
     }
