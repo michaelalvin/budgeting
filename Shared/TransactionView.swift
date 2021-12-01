@@ -18,7 +18,7 @@ struct TransactionView: View {
     @State private var notes: String = ""
     public var backgroundColor: Color
     
-    @State private var mockExpenses = ["exp1", "exp2", "exp3"]
+    @State private var mockExpenses: [Transaction] = []
     
     public init(backgroundColor: Color = Color(red: 21 / 255, green: 24 / 255, blue: 30 / 255, opacity: 1.0)) {
         self.backgroundColor = backgroundColor
@@ -50,7 +50,7 @@ struct TransactionView: View {
                 Section {
                     Button(action: {
                         print("Perform an action here...")
-                        self.mockExpenses.append(self.name)
+                        self.mockExpenses.append(Transaction(name: self.name, amount: self.amount, notes: self.notes))
                         
                         //                        Clear text fields here
                         self.name = ""
@@ -61,7 +61,7 @@ struct TransactionView: View {
                 
                 List {
                     
-                    ForEach(0..<mockExpenses.count, id: \.self) { Text(self.mockExpenses[$0])
+                    ForEach(0..<mockExpenses.count, id: \.self) { Text(self.mockExpenses[$0].name)
                         
                     }
                 }
@@ -85,13 +85,11 @@ struct TransactionView_Previews: PreviewProvider {
 struct Transaction {
     public var name: String
     public var amount: String
-    public var expenseType: String
     public var notes: String
     
-    public init(name: String, amount: String, expenseType: String, notes: String) {
+    public init(name: String, amount: String, notes: String) {
         self.name = name
         self.amount = amount
-        self.expenseType = expenseType
         self.notes = notes
     }
 }
