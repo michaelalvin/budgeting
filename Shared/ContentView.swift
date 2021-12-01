@@ -9,7 +9,17 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        PieChartView(values: [1300, 500, 300], names: ["Rent", "Transport", "Education"], formatter: {value in String(format: "$%.2f", value)})
+        TabView {
+            PieChartView(values: [1300, 500, 300], names: ["Rent", "Transport", "Education"], formatter: {value in String(format: "$%.2f", value)})
+                .tabItem {
+                    Label("Menu", systemImage: "chart.pie")
+                }
+            
+            TransactionView()
+                .tabItem {
+                    Label("Order", systemImage: "plus.circle")
+                }
+        }
     }
 }
 
