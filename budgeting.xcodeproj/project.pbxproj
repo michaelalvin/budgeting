@@ -21,6 +21,8 @@
 		43752D062756A67500CC1BF3 /* PieSliceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43752D042756A67500CC1BF3 /* PieSliceView.swift */; };
 		43752D082756A7D400CC1BF3 /* PieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43752D072756A7D400CC1BF3 /* PieChartView.swift */; };
 		43752D092756A7D400CC1BF3 /* PieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43752D072756A7D400CC1BF3 /* PieChartView.swift */; };
+		4390A75B2757148E005E5680 /* TransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4390A75A2757148E005E5680 /* TransactionView.swift */; };
+		4390A75C2757148E005E5680 /* TransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4390A75A2757148E005E5680 /* TransactionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,7 @@
 		43752CEE2756A65500CC1BF3 /* Tests_macOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSLaunchTests.swift; sourceTree = "<group>"; };
 		43752D042756A67500CC1BF3 /* PieSliceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieSliceView.swift; sourceTree = "<group>"; };
 		43752D072756A7D400CC1BF3 /* PieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartView.swift; sourceTree = "<group>"; };
+		4390A75A2757148E005E5680 /* TransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +109,7 @@
 				43752CC82756A65200CC1BF3 /* budgetingApp.swift */,
 				43752CC92756A65200CC1BF3 /* ContentView.swift */,
 				43752D042756A67500CC1BF3 /* PieSliceView.swift */,
+				4390A75A2757148E005E5680 /* TransactionView.swift */,
 				43752D072756A7D400CC1BF3 /* PieChartView.swift */,
 				43752CCA2756A65500CC1BF3 /* Assets.xcassets */,
 			);
@@ -309,6 +313,7 @@
 			files = (
 				43752D082756A7D400CC1BF3 /* PieChartView.swift in Sources */,
 				43752CF22756A65500CC1BF3 /* ContentView.swift in Sources */,
+				4390A75B2757148E005E5680 /* TransactionView.swift in Sources */,
 				43752CF02756A65500CC1BF3 /* budgetingApp.swift in Sources */,
 				43752D052756A67500CC1BF3 /* PieSliceView.swift in Sources */,
 			);
@@ -320,6 +325,7 @@
 			files = (
 				43752D092756A7D400CC1BF3 /* PieChartView.swift in Sources */,
 				43752CF32756A65500CC1BF3 /* ContentView.swift in Sources */,
+				4390A75C2757148E005E5680 /* TransactionView.swift in Sources */,
 				43752CF12756A65500CC1BF3 /* budgetingApp.swift in Sources */,
 				43752D062756A67500CC1BF3 /* PieSliceView.swift in Sources */,
 			);
