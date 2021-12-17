@@ -15,7 +15,7 @@ struct TransactionView: View {
     @State private var expenseIndex = 0
     public var expenseOptions = ["edu", "transp", "rent"]
     
-    @State private var notes: String = ""
+    @State private var notes: String = "Why are you making this purchase? Buy with intent!"
     public var backgroundColor: Color
     
     @State private var mockExpenses: [Transaction] = []
@@ -50,7 +50,8 @@ struct TransactionView: View {
                 Section {
                     Button(action: {
                         print("Perform an action here...")
-                        self.mockExpenses.append(Transaction(name: self.name, amount: self.amount, notes: self.notes))
+                                                
+                        self.mockExpenses.append(Transaction(name: self.name, amount: self.amount, type: self.expenseOptions[self.expenseIndex], notes: self.notes))
                         
                         //                        Clear text fields here
                         self.name = ""
@@ -62,7 +63,7 @@ struct TransactionView: View {
                 List {
                     
                     ForEach(0..<mockExpenses.count, id: \.self) { Text(self.mockExpenses[$0].name)
-                        
+                        Text(self.mockExpenses[$0].type)
                     }
                 }
             })
@@ -73,7 +74,13 @@ struct TransactionView: View {
     // NEXT
     // 2. Show list on this page on the bottom half with the list of transactions
     // 3. Connect transactions on this tab and the other tab
-    // 4. CoreData
+        // Change PieChartview to use values,names --> transactions
+        // Use observed object, look at project sa @ObservedObject
+        // TransactionView has per transaction whereas
+        // PieChartView has per transaction type,
+        // need to connect the two up
+    // 4. CoreData, or Firebase in Content View
+    // *. Then, try to see if you can add real money to app to certain categories for actual use
 }
 
 struct TransactionView_Previews: PreviewProvider {
@@ -85,11 +92,20 @@ struct TransactionView_Previews: PreviewProvider {
 struct Transaction {
     public var name: String
     public var amount: String
+    public var type: String
     public var notes: String
     
-    public init(name: String, amount: String, notes: String) {
+    public init(name: String, amount: String, type: String, notes: String) {
         self.name = name
         self.amount = amount
+        self.type = type
         self.notes = notes
     }
 }
+
+struct TransactionSums {
+//values: [1300, 500, 300], names: ["Rent", "Transport", "Education"]
+    public var values: [Double]
+    public var names: [String]
+}
+
