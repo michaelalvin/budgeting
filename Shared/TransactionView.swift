@@ -18,10 +18,14 @@ struct TransactionView: View {
     @State private var notes: String = "Why are you making this purchase? Buy with intent!"
     public var backgroundColor: Color
     
-    @State private var mockExpenses: [Transaction] = []
+    @State private var mockExpenses: [Transaction]
+    @State private var mockExpenseSums: TransactionSums
     
     public init(backgroundColor: Color = Color(red: 21 / 255, green: 24 / 255, blue: 30 / 255, opacity: 1.0)) {
         self.backgroundColor = backgroundColor
+        
+        self.mockExpenses = []
+        self.mockExpenseSums = TransactionSums(values: [Double](repeating: 0.0, count: self.expenseOptions.count), names: self.expenseOptions)
     }
     
     var body: some View {
@@ -50,10 +54,16 @@ struct TransactionView: View {
                 Section {
                     Button(action: {
                         print("Perform an action here...")
-                                                
+                                      
+                        // Update mockExpenses and mockExpensesSums
                         self.mockExpenses.append(Transaction(name: self.name, amount: self.amount, type: self.expenseOptions[self.expenseIndex], notes: self.notes))
                         
-                        //                        Clear text fields here
+                        self.mockExpenseSums.values[self.expenseIndex] += Double(self.amount) ?? 0.0
+                        
+                        print(self.mockExpenseSums.values)
+                        print("Done updating...")
+                        
+                        // Clear text fields here
                         self.name = ""
                     }) {
                         Text("Submit")
