@@ -8,8 +8,14 @@
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject var transactionSums =
-    TransactionSums(values: [1300, 500, 300], names: ["Rent", "Transport", "Education"], transactions: [])
+    public var expenseOptions = ["Rent", "Transport", "Education"]
+    
+    @ObservedObject var transactionSums: TransactionSums
+    
+    init() {
+        transactionSums =
+        TransactionSums(values: [1300, 500, 300], names: self.expenseOptions, transactions: [])
+    }
     
     var body: some View {
         TabView {

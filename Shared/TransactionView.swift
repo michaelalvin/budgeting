@@ -13,10 +13,7 @@ struct TransactionView: View {
     
     @State private var name: String = ""
     @State private var amount: String = ""
-    
     @State private var expenseIndex = 0
-    public var expenseOptions = ["Rent", "Transport", "Education"]
-    
     @State private var notes: String = "Why are you making this purchase? Buy with intent!"
     public var backgroundColor: Color = Color(red: 21 / 255, green: 24 / 255, blue: 30 / 255, opacity: 1.0)
             
@@ -36,8 +33,8 @@ struct TransactionView: View {
                             }
                         }
                     Picker(selection: $expenseIndex, label: Text("Expense Type")) {
-                        ForEach(0 ..< expenseOptions.count) {
-                            Text(self.expenseOptions[$0])
+                        ForEach(0 ..< transactionSums.names.count) {
+                            Text(self.transactionSums.names[$0])
                         }
                     }
                     TextField("Any other notes here", text: $notes)
@@ -48,7 +45,7 @@ struct TransactionView: View {
                         print("Perform an action here...")
                                       
                         // Update  mockExpensesSums
-                        self.transactionSums.transactions.append(Transaction(name: self.name, amount: self.amount, type: self.expenseOptions[self.expenseIndex], notes: self.notes))
+                        self.transactionSums.transactions.append(Transaction(name: self.name, amount: self.amount, type: self.transactionSums.names[self.expenseIndex], notes: self.notes))
                         
                         self.transactionSums.values[self.expenseIndex] += Double(self.amount) ?? 0.0
                                                 
@@ -77,6 +74,7 @@ struct TransactionView: View {
                 // Fix expenseOptions
                 // Starting at 0,0,0 piechart error
                 // Show transactions data on list when pie chart is selected
+                // Clean up
     
     // 4. CoreData, or Firebase in Content View
     // *. Then, try to see if you can add real money to app to certain categories for actual use
