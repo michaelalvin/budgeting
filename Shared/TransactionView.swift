@@ -71,7 +71,6 @@ struct TransactionView: View {
     // NEXT
     // 3. Connect transactions on this tab and the other tab
         // TODO: Look at PieCharTview and TransactionView to look and read at ObservedObject correctly
-                // Fix expenseOptions
                 // Starting at 0,0,0 piechart error
                 // Show transactions data on list when pie chart is selected
                 // Clean up
