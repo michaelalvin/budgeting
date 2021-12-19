@@ -69,14 +69,13 @@ struct TransactionView: View {
         
     }
     // NEXT
-    // 3. Connect transactions on this tab and the other tab
-        // TODO: Look at PieCharTview and TransactionView to look and read at ObservedObject correctly
-                // Starting at 0,0,0 piechart error
-                // Show transactions data on list when pie chart is selected
-                // Clean up
+    
+    // Show transactions data on select, clean up code
     
     // 4. CoreData, or Firebase in Content View
-    // *. Then, try to see if you can add real money to app to certain categories for actual use
+    // 5. Later,
+            // a) Add certain categories for actual use or
+            // b) connect ApplePay button so they can pay after they add money
 }
 
 struct TransactionView_Previews: PreviewProvider {

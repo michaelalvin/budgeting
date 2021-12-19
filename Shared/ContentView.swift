@@ -14,7 +14,7 @@ struct ContentView: View {
     
     init() {
         transactionSums =
-        TransactionSums(values: [0, 0, 0], names: self.expenseOptions, transactions: [])
+        TransactionSums(values: [10, 10, 10], names: self.expenseOptions, transactions: [])
     }
     
     var body: some View {

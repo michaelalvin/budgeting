@@ -57,13 +57,16 @@ struct PieChartView: View {
                                     
                                     for (i, slice) in slices.enumerated() {
                                         if (radians < slice.endAngle.radians) {
-                                            self.activeIndex = i
+                                            if self.activeIndex == i {
+                                                // Unselect active index
+                                                self.activeIndex = -1
+                                            } else {
+                                                // Select new active index
+                                                self.activeIndex = i
+                                            }
                                             break
                                         }
                                     }
-                                }
-                                .onEnded { value in
-                                    self.activeIndex = -1
                                 }
                         )
                         Circle()
