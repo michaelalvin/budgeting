@@ -64,9 +64,19 @@ struct TransactionView: View {
                 }
                 
                 List {
-                    ForEach(0..<self.transactionSums.transactions.count, id: \.self) {
+                    ForEach(0..<self.transactionSums.transactions.count, id: \.self) { t in
                         
-                        Text(self.transactionSums.transactions[$0].name)
+                        HStack {
+                            Text(self.transactionSums.transactions[t].name)
+                            Spacer()
+                            VStack(alignment: .trailing) {
+                                Text(self.transactionSums.transactions[t].amount)
+                                Text(self.transactionSums.transactions[t].type)
+                                    .foregroundColor(Color.gray)
+                            }
+                        }
+                        
+//                        Text(self.transactionSums.transactions[$0].name)
                     
                     }
                 }
