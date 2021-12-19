@@ -17,12 +17,19 @@ struct TransactionView: View {
     @State private var notes: String = "Why are you making this purchase? Buy with intent!"
     public var backgroundColor: Color = Color(red: 21 / 255, green: 24 / 255, blue: 30 / 255, opacity: 1.0)
             
+    init(transactionSums: TransactionSums) {
+        self.transactionSums = transactionSums
+        
+        UITableView.appearance().backgroundColor = UIColor(self.backgroundColor)
+        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+    }
+    
     var body: some View {
         NavigationView {
             // Form
             Form(content: {
                 // Text field
-                Section(header: Text("Expense Information")) {
+                Section(header: Text("Expense Information").foregroundColor(.white)) {
                     TextField("Expense Name", text: $name)
                     TextField("Expense Amount", text: $amount)
                         .keyboardType(.numberPad)
