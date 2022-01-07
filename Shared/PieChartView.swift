@@ -82,7 +82,7 @@ struct PieChartView: View {
                         }                }
                     PieChartRows(colors: self.colors, names: self.transactionSums.names, values: self.transactionSums.values.map { self.formatter($0) }, percents: self.transactionSums.values.map { String(format: "%.0f%%", $0 * 100 / self.transactionSums.values.reduce(0, +)) },
                                  activeIndex: self.activeIndex,
-                                 transactions: self.transactionSums.transactions
+                                 tt: self.transactionSums
                     )
                 }
                 .background(self.backgroundColor)
@@ -99,11 +99,12 @@ struct PieChartRows: View {
     var percents: [String]
     
     var activeIndex: Int
-    var transactions: [Transaction]
+    
+    @ObservedObject var tt: TransactionSums
     
     var body: some View {
         VStack{
-            ForEach(0..<self.values.count){ i in
+            ForEach(0..<self.values.count, id: \.self){ i in
                 HStack {
                     RoundedRectangle(cornerRadius: 5.0)
                         .fill(self.colors[i])
@@ -115,26 +116,32 @@ struct PieChartRows: View {
                         Text(self.percents[i])
                             .foregroundColor(Color.gray)
                     }
-                    
-                    
-                    
                 }
                 
-                if (self.activeIndex == i) {
-//                    Text(self.names[i])
+                if(self.activeIndex == i) {
                     VStack {
-                        ForEach(0..<self.transactions.count){ i in
-                            HStack {
-                                Text(self.transactions[i].name)
-                                Spacer()
-                                VStack(alignment: .trailing) {
-                                    Text(self.transactions[i].amount)
-                                        .foregroundColor(Color.gray)
-                                }
-                            }
+                        ForEach(0..<self.tt.transactions[i].count, id: \.self) { t in
+                            Text(self.tt.transactions[i][t].name)
                         }
-                    }.padding(.leading, 32)
+                    }
                 }
+                
+                
+//                if (self.activeIndex == i) {
+////                    Text(self.names[i])
+//                    VStack {
+//                        ForEach(0..<self.transactions.count){ i in
+//                            HStack {
+//                                Text(self.transactions[i].name)
+//                                Spacer()
+//                                VStack(alignment: .trailing) {
+//                                    Text(self.transactions[i].amount)
+//                                        .foregroundColor(Color.gray)
+//                                }
+//                            }
+//                        }
+//                    }.padding(.leading, 32)
+//                }
             }
         }
     }

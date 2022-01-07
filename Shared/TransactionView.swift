@@ -52,7 +52,7 @@ struct TransactionView: View {
                         print("Perform an action here...")
                                       
                         // Update  mockExpensesSums
-                        self.transactionSums.transactions.append(Transaction(name: self.name, amount: self.amount, type: self.transactionSums.names[self.expenseIndex], notes: self.notes))
+                        self.transactionSums.transactions[self.expenseIndex].append(Transaction(name: self.name, amount: self.amount, type: self.transactionSums.names[self.expenseIndex], notes: self.notes))
                         
                         self.transactionSums.values[self.expenseIndex] += Double(self.amount) ?? 0.0
                                                 
@@ -63,23 +63,23 @@ struct TransactionView: View {
                     }
                 }
                 
-                List {
-                    ForEach(0..<self.transactionSums.transactions.count, id: \.self) { t in
-                        
-                        HStack {
-                            Text(self.transactionSums.transactions[t].name)
-                            Spacer()
-                            VStack(alignment: .trailing) {
-                                Text(self.transactionSums.transactions[t].amount)
-                                Text(self.transactionSums.transactions[t].type)
-                                    .foregroundColor(Color.gray)
-                            }
-                        }
-                        
+//                List {
+//                    ForEach(0..<self.transactionSums.transactions.count, id: \.self) { t in
+//
+//                        HStack {
+//                            Text(self.transactionSums.transactions[t].name)
+//                            Spacer()
+//                            VStack(alignment: .trailing) {
+//                                Text(self.transactionSums.transactions[t].amount)
+//                                Text(self.transactionSums.transactions[t].type)
+//                                    .foregroundColor(Color.gray)
+//                            }
+//                        }
+//
 //                        Text(self.transactionSums.transactions[$0].name)
-                    
-                    }
-                }
+//
+//                    }
+//                }
             })
                 .navigationBarTitle("Add Expense")
         }

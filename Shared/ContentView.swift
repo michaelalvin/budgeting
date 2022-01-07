@@ -14,7 +14,7 @@ struct ContentView: View {
     
     init() {
         transactionSums =
-        TransactionSums(values: [10, 10, 10], names: self.expenseOptions, transactions: [])
+        TransactionSums(values: [10, 10, 10], names: self.expenseOptions, transactions: [[Transaction]](repeating: [Transaction](repeating: Transaction(name: "", amount: "", type: "", notes: ""), count: 0), count: self.expenseOptions.count))
     }
     
     var body: some View {
@@ -56,9 +56,9 @@ class TransactionSums: ObservableObject {
 //values: [1300, 500, 300], names: ["Rent", "Transport", "Education"]
     @Published var values: [Double]
     @Published var names: [String]
-    @Published var transactions: [Transaction]
+    @Published var transactions: [[Transaction]]
     
-    public init(values: [Double], names: [String], transactions: [Transaction]) {
+    public init(values: [Double], names: [String], transactions: [[Transaction]]) {
         self.values = values
         self.names = names
         self.transactions = transactions
