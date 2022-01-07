@@ -68,9 +68,6 @@ struct TransactionView: View {
         }
     }
     // NEXT
-    
-    // clean up code
-    
     // 4. CoreData, or Firebase in Content View
     // 5. Later,
             // a) Add certain categories for actual use or

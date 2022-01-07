@@ -123,7 +123,7 @@ struct PieChartRows: View {
                             HStack {
                                 Text(self.tt.transactions[i][t].name)
                                 Spacer()
-                                Text(self.tt.transactions[i][t].amount)
+                                Text("$" + self.tt.transactions[i][t].amount)
                             }
                         }
                     }.padding(.leading, 32)
