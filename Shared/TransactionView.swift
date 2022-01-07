@@ -58,36 +58,18 @@ struct TransactionView: View {
                                                 
                         // Clear text fields here
                         self.name = ""
+                        self.amount = ""
                     }) {
                         Text("Submit")
                     }
                 }
-                
-//                List {
-//                    ForEach(0..<self.transactionSums.transactions.count, id: \.self) { t in
-//
-//                        HStack {
-//                            Text(self.transactionSums.transactions[t].name)
-//                            Spacer()
-//                            VStack(alignment: .trailing) {
-//                                Text(self.transactionSums.transactions[t].amount)
-//                                Text(self.transactionSums.transactions[t].type)
-//                                    .foregroundColor(Color.gray)
-//                            }
-//                        }
-//
-//                        Text(self.transactionSums.transactions[$0].name)
-//
-//                    }
-//                }
             })
                 .navigationBarTitle("Add Expense")
         }
-        
     }
     // NEXT
     
-    // Show transactions data on select, clean up code
+    // clean up code
     
     // 4. CoreData, or Firebase in Content View
     // 5. Later,
