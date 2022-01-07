@@ -80,7 +80,10 @@ struct PieChartView: View {
                             Text(self.formatter(self.activeIndex == -1 ? transactionSums.values.reduce(0, +) : transactionSums.values[self.activeIndex]))
                                 .font(.title)
                         }                }
-                    PieChartRows(colors: self.colors, names: self.transactionSums.names, values: self.transactionSums.values.map { self.formatter($0) }, percents: self.transactionSums.values.map { String(format: "%.0f%%", $0 * 100 / self.transactionSums.values.reduce(0, +)) })
+                    PieChartRows(colors: self.colors, names: self.transactionSums.names, values: self.transactionSums.values.map { self.formatter($0) }, percents: self.transactionSums.values.map { String(format: "%.0f%%", $0 * 100 / self.transactionSums.values.reduce(0, +)) },
+                                 activeIndex: self.activeIndex,
+                                 transactions: self.transactionSums.transactions
+                    )
                 }
                 .background(self.backgroundColor)
                 .foregroundColor(Color.white)
@@ -94,6 +97,9 @@ struct PieChartRows: View {
     var names: [String]
     var values: [String]
     var percents: [String]
+    
+    var activeIndex: Int
+    var transactions: [Transaction]
     
     var body: some View {
         VStack{
@@ -109,6 +115,25 @@ struct PieChartRows: View {
                         Text(self.percents[i])
                             .foregroundColor(Color.gray)
                     }
+                    
+                    
+                    
+                }
+                
+                if (self.activeIndex == i) {
+//                    Text(self.names[i])
+                    VStack {
+                        ForEach(0..<self.transactions.count){ i in
+                            HStack {
+                                Text(self.transactions[i].name)
+                                Spacer()
+                                VStack(alignment: .trailing) {
+                                    Text(self.transactions[i].amount)
+                                        .foregroundColor(Color.gray)
+                                }
+                            }
+                        }
+                    }.padding(.leading, 32)
                 }
             }
         }
